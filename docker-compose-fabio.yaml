@@ -1,0 +1,56 @@
+networks:
+  ticketz:
+  infra:
+    external: true
+
+volumes:
+  backend_public:
+  backend_private:
+
+services:
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    volumes:
+      - backend_public:/usr/src/app/public
+      - backend_private:/usr/src/app/private
+    env_file:
+      - .env-backend-fabio
+    restart: always
+    ports:
+      - ${BACKEND_PORT:-8080}:3000
+    networks:
+      - ticketz
+      - infra
+
+  frontend:
+    ports:
+      - ${FRONTEND_PORT:-3000}:80
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    env_file:
+      - .env-frontend-fabio
+    volumes:
+      - backend_public:/var/www/backend-public
+    restart: always
+    depends_on:
+      - backend
+    networks:
+      - ticketz
+
+  sidekick:
+    image: ghcr.io/ticketz-oss/ticketz-sidekick:latest
+    profiles: ["do-not-start"]
+    env_file:
+      - .env-backend-fabio
+    restart: unless-stopped
+    volumes:
+      - backend_public:/backend-public
+      - backend_private:/backend-private
+      - ./backups:/backups
+      - ./retrieve:/retrieve
+    networks:
+      - ticketz
