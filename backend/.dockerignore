@@ -2,3 +2,6 @@ Dockerfile
 node_modules
 .env
 dist
+.dockerignore
+.editorconfig
+.gitignore
