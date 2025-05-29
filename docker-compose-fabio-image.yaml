@@ -24,7 +24,7 @@ services:
       - infra
 
   frontend:
-    image: fabionaspolini/ticketz-front:latest
+    image: fabionaspolini/ticketz-frontend:latest
     ports:
       - ${FRONTEND_PORT:-3000}:80
     env_file:
