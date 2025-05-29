@@ -18,7 +18,7 @@ services:
       - backend_private:/usr/src/app/private
     env_file:
       - .env-backend-fabio
-    restart: always
+    restart: unless-stopped
     ports:
       - ${BACKEND_PORT:-8080}:3000
     networks:
@@ -35,7 +35,7 @@ services:
       - .env-frontend-fabio
     volumes:
       - backend_public:/var/www/backend-public
-    restart: always
+    restart: unless-stopped
     depends_on:
       - backend
     networks:
