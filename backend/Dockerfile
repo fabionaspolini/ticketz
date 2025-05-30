@@ -11,8 +11,9 @@ RUN --mount=type=cache,target=/root/.npm \
 
 # Stage 2: Create the final image without source files
 FROM ghcr.io/ticketz-oss/node
-
 ARG TICKETZ_REGISTRY_URL
+
+RUN apt update && apt upgrade -y
 
 WORKDIR /usr/src/app
 

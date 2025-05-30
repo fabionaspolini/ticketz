@@ -9,6 +9,7 @@ RUN --mount=type=cache,target=/root/.npm \
     npm ci && npm run build
 
 FROM ghcr.io/ticketz-oss/nginx-alpine
+RUN apk update && apk upgrade --no-cache
 
 WORKDIR /usr/share/nginx/html
 
