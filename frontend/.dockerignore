@@ -4,3 +4,6 @@ public/config.json
 dist
 .dockerignore
 .gitignore
+.env*
+docker-compose*.yaml
+README*.md

@@ -5,3 +5,6 @@ dist
 .dockerignore
 .editorconfig
 .gitignore
+.env*
+docker-compose*.yaml
+README*.md
