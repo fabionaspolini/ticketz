@@ -20,14 +20,14 @@ services:
       - .env-backend-fabio
     restart: unless-stopped
     ports:
-      - ${BACKEND_PORT:-8080}:3000
+      - ${BACKEND_PORT:-5091}:5091
     networks:
       - ticketz
       - infra
 
   frontend:
     ports:
-      - ${FRONTEND_PORT:-3000}:80
+      - ${FRONTEND_PORT:-5090}:5090
     build:
       context: ./frontend
       dockerfile: ./Dockerfile
