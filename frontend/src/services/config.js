@@ -28,12 +28,22 @@ export function getBackendURL() {
   );
 }
 
+// export function getBackendSocketURL() {
+//   return (
+//     config.REACT_APP_BACKEND_URL ||
+//     (config.BACKEND_PROTOCOL ?? "https") + "://" +
+//     (config.BACKEND_HOST) + ":" + (config.BACKEND_PORT ?? 443)
+//   );
+// }
 export function getBackendSocketURL() {
   return (
-    config.REACT_APP_BACKEND_URL ||
-    (config.BACKEND_PROTOCOL ?? "https") + "://" +
-    (config.BACKEND_HOST) + ":" + (config.BACKEND_PORT ?? 443)
+    (config.SOCKET_PROTOCOL ?? "https") + "://" +
+    (config.SOCKET_HOST) + ":" + (config.SOCKET_PORT ?? 443)
   );
+}
+
+export function getBackendSocketPath() {
+  return config.SOCKET_PATH ?? "/socket.io";
 }
 
 export default config;

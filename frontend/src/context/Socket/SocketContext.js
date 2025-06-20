@@ -41,7 +41,7 @@
 
 import { createContext } from "react";
 import openSocket from "socket.io-client";
-import { getBackendSocketURL } from "../../services/config";
+import { getBackendSocketURL, getBackendSocketPath } from "../../services/config";
 import { decodeToken, isExpired } from "react-jwt";
 import api from "../../services/api";
 
@@ -157,6 +157,7 @@ const socketManager = {
         pingTimeout: 18000,
         pingInterval: 18000,
         query: { token },
+        path: getBackendSocketPath()
       });
 
       this.currentSocket.io.on("reconnect_attempt", () => {
