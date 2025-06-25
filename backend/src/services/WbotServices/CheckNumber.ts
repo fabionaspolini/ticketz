@@ -1,16 +1,22 @@
 import AppError from "../../errors/AppError";
 import GetDefaultWhatsApp from "../../helpers/GetDefaultWhatsApp";
-import { getWbot } from "../../libs/wbot";
+import { getWbot, Session } from "../../libs/wbot";
 import Whatsapp from "../../models/Whatsapp";
 
 interface IOnWhatsapp {
   jid: string;
   exists: boolean;
+  lid: string;
 }
 
-const checker = async (number: string, wbot: any) => {
-  const [validNumber] = await wbot.onWhatsApp(`${number}@s.whatsapp.net`);
-  return validNumber;
+const checker = async (number: string, wbot: Session) => {
+  const jid = number.includes("@") ? number : `${number}@s.whatsapp.net`;
+  const [validNumber] = await wbot.onWhatsApp(jid);
+  return {
+    jid: validNumber.jid,
+    exists: !!validNumber.exists,
+    lid: (validNumber.lid as string) || null
+  };
 };
 
 const CheckContactNumber = async (
