@@ -41,7 +41,7 @@
 
 import { createContext } from "react";
 import openSocket from "socket.io-client";
-import { getBackendSocketURL, getBackendSocketPath } from "../../services/config";
+import {getBackendSocketURL, getBackendSocketPath, getBackendURL} from "../../services/config";
 import { decodeToken, isExpired } from "react-jwt";
 import api from "../../services/api";
 

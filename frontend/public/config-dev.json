@@ -2,5 +2,11 @@
   "BACKEND_PROTOCOL": "http",
   "BACKEND_HOST": "localhost",
   "BACKEND_PORT": "5091",
+
+  "SOCKET_PROTOCOL" : "http",
+  "SOCKET_HOST" : "localhost",
+  "SOCKET_PORT" : "5091",
+  "SOCKET_PATH" : "/socket.io",
+  
   "LOG_LEVEL": "debug"
 }
