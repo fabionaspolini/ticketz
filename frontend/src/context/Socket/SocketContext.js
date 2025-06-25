@@ -153,6 +153,7 @@ const socketManager = {
       
       this.currentSocket = openSocket(getBackendSocketURL(), {
         transports: ["websocket"],
+        // transports: ["polling"],
         pingTimeout: 18000,
         pingInterval: 18000,
         query: { token },

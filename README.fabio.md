@@ -11,10 +11,9 @@ docker push fabionaspolini/ticketz-front:latest
 # Execute my versions
 
 ```bash
-docker compose -f docker-compose-fabio.yaml build
-
-docker compose -f docker-compose-fabio.yaml up -d
-docker compose -f docker-compose-fabio.yaml down -v
+docker compose -f docker-compose-fabio.yaml build && \
+  docker compose -f docker-compose-fabio.yaml down -v && \
+  docker compose -f docker-compose-fabio.yaml up -d
 ```
 
 ```bash

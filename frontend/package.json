@@ -62,7 +62,7 @@
     "yup": "^1.4.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "dotenv -e ../.env-frontend-debug -- react-scripts start",
     "legacy": "react-scripts start",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "builddev": "react-scripts build",
